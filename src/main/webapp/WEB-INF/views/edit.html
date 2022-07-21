@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <form method="post" enctype="multipart/form-data">
+        <table class="table table-striped" th:object="${student}">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>img</th>
+                <th>age</th>
+                <th>address</th>
+                <th>status</th>
+                <th>category</th>
+            </tr>
+            <tr>
+                <th><input th:value="*{id}" name="id" id="id" readonly></th>
+                <th><input th:field="*{name}"></th>
+                <th><input name="file" type="file"></th>
+                <th><input th:field="*{age}"></th>
+                <th><input th:field="*{address}"></th>
+                <th><input th:field="*{status}"></th>
+                <th>
+                    <select name="classIndex">
+                        <option th:each="c,obj: ${classes}" th:text="${c.name}" th:value="${obj.index}" th:selected="${c.id==student.getaClass().id}"></option>
+                    </select>
+                </th>
+            </tr>
+        </table>
+        <button type="submit">Edit</button>
+    </form>
+</div>
+</body>
+</html>
